@@ -30,6 +30,9 @@ driver.find_element_by_xpath("//*[@id='form_table']/tbody/tr[10]/td[3]/div/label
 driver.find_element_by_xpath("//*[@id='form_table']/tbody/tr[11]/td[2]/div/label[2]/div").click()
 driver.find_element_by_xpath("//*[@id='form_table']/tbody/tr[12]/td[2]/div/label[2]/div").click()
 driver.find_element_by_xpath("//*[@id='textarea']").send_keys("很好")
+driver.find_element_by_xpath("//*[@id='subtn']").click()
+time.sleep(1)
+driver.find_element_by_xpath("/html/body/div[7]/div[3]/a").click()
 time.sleep(1)
 #跳转修改信息页面
 driver.find_element_by_xpath("//*[@id='_easyui_tree_8']/span[4]/a").click()
@@ -45,5 +48,5 @@ driver.find_element_by_xpath("//*[@id='info']/table/tbody/tr[8]/td[2]/input").se
 driver.find_element_by_xpath("//*[@id='info']/table/tbody/tr[9]/td[2]/textarea").send_keys("旺旺")
 # driver.find_element_by_xpath("//*[@id='btn_modify']").click()
 
-time.sleep(3)
-driver.quit()
+# time.sleep(3)
+# driver.quit()
