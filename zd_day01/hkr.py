@@ -17,6 +17,7 @@ driver.find_element_by_xpath("//*[@id='ul_pic']/li[3]").click()
 # driver.find_element_by_xpath("//*[@id='pic_btn']").click()
 #跳转首页
 driver.find_element_by_xpath("//*[@id='tt']/div[1]/div[3]/ul/li[1]").click()
+driver.refresh()
 #评价表
 driver.find_element_by_xpath("//*[@id='form_table']/tbody/tr[2]/td[2]/select").send_keys("9（上晚自习）")
 driver.find_element_by_xpath("//*[@id='tea_td']/select").send_keys("贾生")
@@ -37,14 +38,24 @@ time.sleep(1)
 #跳转修改信息页面
 driver.find_element_by_xpath("//*[@id='_easyui_tree_8']/span[4]/a").click()
 #修改信息
-driver.find_element_by_xpath("//*[@id='info']/table/tbody/tr[1]/td[2]/input").send_keys("旺柴")
-driver.find_element_by_xpath("//*[@id='info']/table/tbody/tr[3]/td[2]/input").send_keys("123456")
-driver.find_element_by_xpath("//*[@id='_easyui_textbox_input1']").send_keys("10")
-driver.find_element_by_xpath("//*[@id='info']/table/tbody/tr[5]/td[2]/select").send_keys("女")
-driver.find_element_by_xpath("//*[@id='info']/table/tbody/tr[6]/td[2]/input").clear()
 time.sleep(1)
+driver.find_element_by_xpath("//*[@id='info']/table/tbody/tr[1]/td[2]/input").clear()
+driver.find_element_by_xpath("//*[@id='info']/table/tbody/tr[1]/td[2]/input").send_keys("旺柴")
+
+driver.find_element_by_xpath("//*[@id='info']/table/tbody/tr[3]/td[2]/input").clear()
+driver.find_element_by_xpath("//*[@id='info']/table/tbody/tr[3]/td[2]/input").send_keys("123456")
+
+driver.find_element_by_xpath("//*[@id='_easyui_textbox_input1']").clear()
+driver.find_element_by_xpath("//*[@id='_easyui_textbox_input1']").send_keys("10")
+
+driver.find_element_by_xpath("//*[@id='info']/table/tbody/tr[5]/td[2]/select").send_keys("女")
+
+driver.find_element_by_xpath("//*[@id='info']/table/tbody/tr[6]/td[2]/input").clear()
 driver.find_element_by_xpath("//*[@id='info']/table/tbody/tr[6]/td[2]/input").send_keys("河北")
+
+driver.find_element_by_xpath("//*[@id='info']/table/tbody/tr[8]/td[2]/input").clear()
 driver.find_element_by_xpath("//*[@id='info']/table/tbody/tr[8]/td[2]/input").send_keys("123456789@qq.com")
+
 driver.find_element_by_xpath("//*[@id='info']/table/tbody/tr[9]/td[2]/textarea").send_keys("旺旺")
 # driver.find_element_by_xpath("//*[@id='btn_modify']").click()
 
