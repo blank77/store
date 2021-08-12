@@ -120,5 +120,5 @@ driver.find_element_by_id('order-submit').click()
 
 # 关闭
 time.sleep(3)
+driver.close()
 driver.quit()
-# driver.quit()

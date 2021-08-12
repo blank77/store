@@ -6,7 +6,6 @@ import time
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_experimental_option("excludeSwitches", ['enable-automation'])
 
-
 # 打开谷歌浏览器
 driver = webdriver.Chrome(options=chrome_options)
 
@@ -23,28 +22,47 @@ driver.find_element_by_link_text('登录').click()
 data = driver.window_handles
 driver.switch_to.window(data[1])
 
-# 用户名
-driver.find_element_by_id('fm-login-id').send_keys('白染天空')
+# # 用户名
+# driver.find_element_by_id('fm-login-id').send_keys('白染天空')
+#
+# # 密码
+# driver.find_element_by_id('fm-login-password').send_keys('')
+driver.find_element_by_xpath("//*[@id='login']/div[1]/i").click()
+time.sleep(10)
 
-# 密码
-driver.find_element_by_id('fm-login-password').send_keys('13903254007zy.')
 
-# 滑动验证
-time.sleep(5)
-ac = ActionChains(driver)
-slider = driver.find_element_by_xpath("//*[@id='nc_2_n1z' and @class='nc_iconfont btn_slide']")  # 定位滑块
-# slider = chromeDriver.find_element_by_id('nc_2_n1z')  # 定位滑块
-ac.click_and_hold(slider).move_by_offset(300, 0).perform()
-
-driver.find_element_by_class_name('fm-button fm-submit password-login').click()
 
 # 输入框搜索
-driver.find_element_by_id('q').send_keys('iphone12')
+driver.find_element_by_id('q').send_keys('华为P50pro')
 
 # 点击搜索
-driver.find_element_by_link_text('搜索').click()
+driver.find_element_by_xpath("//*[@id='J_TSearchForm']/div[1]/button").click()
 
+data = driver.window_handles
+driver.switch_to.window(data[1])
+time.sleep(2)
+driver.find_element_by_xpath("//*[@id='J_Itemlist_PLink_630673675853']").click()
+
+data = driver.window_handles
+driver.switch_to.window(data[2])
+time.sleep(2)
+driver.find_element_by_link_text("4G全网通").click()
+
+driver.find_element_by_link_text("亮黑色").click()
+
+driver.find_element_by_link_text("8+256GB").click()
+driver.find_element_by_xpath("//*[@id='J_LinkBasket']").click()
+time.sleep(3)
+
+driver.find_element_by_xpath("//*[@id='mc-menu-hd']").click()
+time.sleep(2)
+
+driver.find_element_by_xpath("//*[@id='J_SelectAll1']").click()
+time.sleep(2)
+driver.find_element_by_xpath("//*[@id='J_FloatBar']/div[2]/div[3]/div[5]").click()
 # 关闭
+time.sleep(4)
+driver.close()
 driver.quit()
 
 

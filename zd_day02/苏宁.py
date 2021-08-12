@@ -53,4 +53,5 @@ driver.find_element_by_name('cart1_go').click()
 # 去结算
 driver.find_element_by_name('icart1_ope_buy01').click()
 time.sleep(3)
+driver.close()
 driver.quit()
