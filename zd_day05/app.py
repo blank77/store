@@ -16,7 +16,7 @@ desired_capabilities = {
     }
 
 driver = webdriver.Remote(server, desired_capabilities) # 连接手机和APP
-time.sleep(7)
+time.sleep(12)
 driver.find_element_by_id("com.ss.android.ugc.aweme:id/bdb").click()
 
 time.sleep(2)
