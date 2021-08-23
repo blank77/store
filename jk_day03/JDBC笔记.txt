@@ -1,0 +1,66 @@
+测试过程中，需要用到数据库的场景有哪些呢？
+	1、测试数据的制造
+	2、查询数据库的数据，用于测试的输入
+	3、查询数据库的数据，用于测试结果的检验
+	4、性能测试
+
+Jmeter如何结合数据库更好的进行测试呢？
+	Jmeter是一款JAVA应用，是通过JDBC方式去连接和操作数据库
+	前提：
+	1、JDBC驱动包：jmeter默认是没有提供JDBC驱动包的，这个是需要大家根据实际要操作的数据库产品类型，去对应的数据库官网下载
+	下载之后，需要将JDBC的驱动包（jar包）放入jmeter的lib目录下
+	
+	2、获取要连接的数据库服务器相关信息
+		数据库地址
+		数据库端口
+		数据库名
+		用户名
+		密码
+
+Jmeter中和JDBC连接数据库有关的组件：
+	JDBC Connection Configuration：JDBC连接配置组件,是用来连接信息的。属于必选组件
+	JDBC Request：JDBC请求,一般来说我们对于需求1和4，会使用该组件
+	JDBC PreProcessor：JDBC前置处理器，该组件一般用于需求2和3
+	JDBC PostProcessor：JDBC后置处理器，该组件一般用于需求2和3
+	PS：JDBC请求、JDBC前置处理器及JDBC后置处理器的配置项是基本一致的，这三者都依赖于JDBC连接配置组件
+
+JDBC Connection Configuration：
+	Variable Name: 变量名称，由用户自定义，用于存储连接配置信息的，在后续的JDBC请求、JDBC前置处理器及JDBC后置处理器三种组件中需要被用到。
+
+	Database URL: 数据库链接地址。
+	PS：不同类型的数据库的，Database URL的写法是不一样的
+	写法可以从开发获取，也可以通过Jmeter的帮助文档或者互联网获取
+	JDBC Driver class：JDBC驱动类
+	Username：数据库用户名
+	Password；数据库密码
+
+
+JDBC Request选项详解：
+	variable Name：该处需要填写的是我们在JDBC Connection Configuration中所定义的variable Name表示使用对应的连接去操作数据库
+	Queru Type：请求类型，要求实际执行的SQL语句的关键贼和所选的类型保持一致。
+		Select Statement；select类型，对应的关键字：
+			select
+		Update Staement：update类型，对应的关键字：
+			create alter drop
+			insert update delete
+		Callable Staement：Callable类型，基本上支持所有的sql关键字。
+			一般主要是用来用于存储过程、函数等的调用
+		Prepared Select Statement：前置Select类型，所支持的关键字和Select是一致的
+		Prepared Update Statement：前置Update类型，所支持的关键字和Update是一致的。
+		Prepared类型又叫批量、预处理操作,先编译再传参的。
+		特征：
+		SQL语句中允许通过问好来实现占位传参的效果。
+		问好所需要的值从下方的Parameter values和Parameter types中获取
+	Parameter values：参数值，该处可以填写多个参数值
+		参数值之间使用逗号作为分隔符
+		参数值的个数要求和SQL语句中的问好个数保持一致
+		参数值是按照位置的顺序一一传递给SQL语句中的问号
+	Parameter types：参数类型，该处可以填写多个参数类型
+		参数类型之间使用逗号作为分隔符
+		参数类型的个数要求和参数值的个数保持一致
+		参数类型的类型、顺序要求和实际的参数值保持一致
+
+	Variable Names: 变量名称，由用户自定义，用于存储从数据库查询的结果
+		变量名可以有多个，使用逗号进行分隔。
+		一个变量存储结果中的一列值，变量和列按照顺序一一对应，即第N个变量存储结果中的第N列值。
+		
